@@ -1,3 +1,3 @@
-# 이거 봐(bwa), Notification Sender
+# 이거 봐(bwa): Simple Notification Sender
 
 
