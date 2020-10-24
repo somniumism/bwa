@@ -9,7 +9,6 @@ from datetime import datetime
 import functools
 import json
 import os
-import requests
 import traceback
 import yagmail
 from smtplib import SMTPAuthenticationError

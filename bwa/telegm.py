@@ -7,9 +7,7 @@
 
 from datetime import datetime
 import functools
-import json
 import os
-import requests
 import telegram
 import traceback
 

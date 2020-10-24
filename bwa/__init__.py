@@ -1,0 +1,5 @@
+__title__ = 'bwa'
+__version__ = '0.1.0'
+__author__ = 'SeungMin Lee(@somniumism)'
+__license__ = 'MIT License'
+__copyright__ = 'Copyright 2020 SeungMin Lee(@somniumism)'
