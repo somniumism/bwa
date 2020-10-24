@@ -66,7 +66,7 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
 
             if notify_end_too and not custom_content:
                 try:
-                    _ = func(*args, kwargs)
+                    _ = func(*args, **kwargs)
                     end = datetime.now()
 
                     send(get_content_for_end(fname, start, end, end - start))
@@ -74,7 +74,7 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
                     end = datetime.now()
                     send(get_content_for_dead(
                         fname, start, end, end - start, exp))
-
+                    raise exp
         return wrapper
     return decorator
 

@@ -18,7 +18,7 @@ class SlackTest(unittest.TestCase):
 
     def test_decorator_with_end(self):
         @deco_noti(webhook_url=webhook_url, notify_end_too=True)
-        def decorator_with_end():
+        def decorator_with_end(webhook_url=webhook_url):
             sleep(3)
         decorator_with_end()
 
