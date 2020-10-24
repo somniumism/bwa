@@ -4,7 +4,7 @@
 from time import sleep
 import unittest
 
-from bwa.send_gmail import deco_noti, send_noti
+from bwa.gmail import deco_noti, send_noti
 
 receiver_emails = ["<GMAIL_ADDRESS>"]
 sender_email = "<TESTER's EMAIL>"

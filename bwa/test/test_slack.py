@@ -4,7 +4,7 @@
 from time import sleep
 import unittest
 
-from bwa.send_slack import deco_noti, send_noti
+from bwa.slack import deco_noti, send_noti
 
 webhook_url = "<YOUR_WEBHOOK_URL>"
 
