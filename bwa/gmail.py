@@ -78,21 +78,27 @@ def deco_noti(receiver_emails=[], sender_email="", sender_password="", custom_co
             for receiver in receivers:
                 send(get_content_for_start(fname, start), receiver)
 
-            if notify_end_too and not custom_content:
-                try:
-                    _ = func(*args, **kwargs)
-                    end = datetime.now()
+            try:
+                res = func(*args, **kwargs)
+                end = datetime.now()
 
+                if notify_end_too and not custom_content:
                     for receiver in receivers:
                         send(get_content_for_end(
                             fname, start, end, end - start), receiver)
+                return res
+            except Exception as exp:
+                end = datetime.now()
 
-                except Exception as exp:
-                    end = datetime.now()
+                if notify_end_too and not custom_content:
                     for receiver in receivers:
                         send(get_content_for_dead(fname, start,
                                                   end, end - start, exp), receiver)
-                    raise exp
+                else:
+                    for receiver in receivers:
+                        send(
+                            "Your function ended unexpectedly due to an exception or error.", receiver)
+                raise exp
 
         return wrapper
     return decorator

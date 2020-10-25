@@ -66,17 +66,20 @@ def deco_noti(token="", chat_id="", custom_content="", notify_end_too=False):
 
             send(get_content_for_start(fname, start))
 
-            if notify_end_too and not custom_content:
-                try:
-                    _ = func(*args, **kwargs)
-                    end = datetime.now()
-
+            try:
+                res = func(*args, **kwargs)
+                end = datetime.now()
+                if notify_end_too and not custom_content:
                     send(get_content_for_end(fname, start, end, end - start))
-                except Exception as exp:
-                    end = datetime.now()
+                return res
+            except Exception as exp:
+                end = datetime.now()
+                if notify_end_too and not custom_content:
                     send(get_content_for_dead(
                         fname, start, end, end - start, exp))
-                    raise exp
+                else:
+                    send("Your function ended unexpectedly due to an exception or error.")
+                raise exp
 
         return wrapper
     return decorator
