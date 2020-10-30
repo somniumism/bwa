@@ -53,9 +53,10 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
         if not url:
             raise WebhookUrlEnteredError()
 
-        def send(contents):
+        def send(contents, error=False):
+            content = contents if error else custom_content or contents
             _ = requests.post(url=url, data=json.dumps(
-                {'content': custom_content or contents}), headers={'Content-Type': 'application/json'})
+                {'content': content}), headers={'Content-Type': 'application/json'})
 
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -73,7 +74,7 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
             except Exception as exp:
                 end = datetime.now()
                 send(get_content_for_dead(
-                    fname, start, end, end - start, exp))
+                    fname, start, end, end - start, exp), error=True)
                 raise exp
 
         return wrapper

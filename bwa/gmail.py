@@ -61,9 +61,9 @@ def deco_noti(receiver_emails=[], sender_email="", sender_password="", custom_co
                     exp=exp, trace=traceback.format_exc())
 
     def decorator(func):
-        def send(contents, receiver):
+        def send(contents, receiver, error=False):
             try:
-                content = custom_content or contents
+                content = contents if error else custom_content or contents
                 title = content.split("\n")[0][:50] if len(
                     content.split("\n")[0]) > 50 else content.split("\n")[0]
                 sender.send(receiver, title, content)
@@ -91,7 +91,7 @@ def deco_noti(receiver_emails=[], sender_email="", sender_password="", custom_co
                 end = datetime.now()
                 for receiver in receivers:
                     send(get_content_for_dead(fname, start,
-                                              end, end - start, exp), receiver)
+                                              end, end - start, exp), receiver, error=True)
                 raise exp
 
         return wrapper

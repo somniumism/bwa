@@ -55,8 +55,8 @@ def deco_noti(token="", chat_id="", custom_content="", notify_end_too=False):
 
         bot = telegram.Bot(token=t_token)
 
-        def send(contents):
-            text = custom_content or contents
+        def send(contents, error=False):
+            text = contents if error else custom_content or contents
             bot.send_message(chat_id=int(t_chat_id), text=text)
 
         @functools.wraps(func)
@@ -75,7 +75,7 @@ def deco_noti(token="", chat_id="", custom_content="", notify_end_too=False):
             except Exception as exp:
                 end = datetime.now()
                 send(get_content_for_dead(
-                    fname, start, end, end - start, exp))
+                    fname, start, end, end - start, exp), error=True)
                 raise exp
 
         return wrapper
