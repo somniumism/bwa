@@ -94,8 +94,6 @@ pip install bwa
 ### 예기치 못한 오류로 인해 함수가 죽었을 떄
 
 ```
-# 비고: 함수 종료시에 알림을 받을 수 있도록 notify_end_too 파라미터가 True로 설정된 경우
-
 😭 Your function <function_name> ended unexpectedly due to an exception or error.
     - function name: function_name
     - start time: 2020-10-25 01:25:06
