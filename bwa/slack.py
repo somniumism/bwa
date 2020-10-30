@@ -36,7 +36,7 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
                               str_end=end.strftime(DATE_FORMAT), run=run)
 
     def get_content_for_dead(fname, start, end, run, exp):
-        return "😭 Your function <{fname}> died in action...\n \
+        return "😭 Your function <{fname}> ended unexpectedly due to an exception or error.\n \
 		\t- function name: {fname}\n \
 		\t- start time: {str_start}\n \
 		\t- dead time: {str_end}\n \
@@ -72,11 +72,8 @@ def deco_noti(webhook_url="", custom_content="", notify_end_too=False):
                 return res
             except Exception as exp:
                 end = datetime.now()
-                if notify_end_too and not custom_content:
-                    send(get_content_for_dead(
-                        fname, start, end, end - start, exp))
-                else:
-                    send("Your function ended unexpectedly due to an exception or error.")
+                send(get_content_for_dead(
+                    fname, start, end, end - start, exp))
                 raise exp
         return wrapper
     return decorator

@@ -96,7 +96,7 @@ pip install bwa
 ```
 # 비고: 함수 종료시에 알림을 받을 수 있도록 notify_end_too 파라미터가 True로 설정된 경우
 
-😭 Your function <function_name> died in action...
+😭 Your function <function_name> ended unexpectedly due to an exception or error.
     - function name: function_name
     - start time: 2020-10-25 01:25:06
     - dead time: 2020-10-25 01:25:12
@@ -106,13 +106,6 @@ pip install bwa
     - Traceback:
     Traceback (most recent call last):
     File "/Users/test-user/test/gmail_test_case.py", line 83, in wrapper
-```
-
-```
-# 비고: notify_end_too 파라미터를 입력하지 않는 경우
-
-
-Your function ended unexpectedly due to an exception or error.
 ```
 
 ## Reference & Copyright

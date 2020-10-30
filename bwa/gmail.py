@@ -49,7 +49,7 @@ def deco_noti(receiver_emails=[], sender_email="", sender_password="", custom_co
                               str_end=end.strftime(DATE_FORMAT), run=run)
 
     def get_content_for_dead(fname, start, end, run, exp):
-        return "😭 Your function <{fname}> died in action...\n \
+        return "😭 Your function <{fname}> ended unexpectedly due to an exception or error.\n \
 		\t- function name: {fname}\n \
 		\t- start time: {str_start}\n \
 		\t- dead time: {str_end}\n \
@@ -89,15 +89,9 @@ def deco_noti(receiver_emails=[], sender_email="", sender_password="", custom_co
                 return res
             except Exception as exp:
                 end = datetime.now()
-
-                if notify_end_too and not custom_content:
-                    for receiver in receivers:
-                        send(get_content_for_dead(fname, start,
-                                                  end, end - start, exp), receiver)
-                else:
-                    for receiver in receivers:
-                        send(
-                            "Your function ended unexpectedly due to an exception or error.", receiver)
+                for receiver in receivers:
+                    send(get_content_for_dead(fname, start,
+                                              end, end - start, exp), receiver)
                 raise exp
 
         return wrapper
