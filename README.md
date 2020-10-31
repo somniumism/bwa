@@ -39,7 +39,7 @@ def run():
 `pip`를 통해 설치할 수 있습니다. 아래의 커맨드를 통해 설치를 해주시면 됩니다.
 
 ```bash
-pip install bwa
+pip install bwa==1.1.1
 ```
 
 
@@ -105,6 +105,25 @@ pip install bwa
     Traceback (most recent call last):
     File "/Users/test-user/test/gmail_test_case.py", line 83, in wrapper
 ```
+## FAQ
+
+Q. What is the difference between Huggingface's **knockknock** and **bwa**?
+
+A: I used `knockknock` a lot, and there were many inconveniences while using `knockknock`.
+
+1. `knockknock` cannot send the custom message that the user wants. You have to send the message only in the format made by them.
+
+2. Because `knockknock` does not support environment variables, you must write all parameters when using the decorator. In other words, it's not pretty and it's not simple.
+
+3. `knockknock` only supports decorator. You may want to be notified about the execution of the line rather than the execution of the function. But it is not possible in `knockknock`, which only supports decoder.
+
+So I designed the bwa to support all of the above functions and create a simply, pretty and user-friendly library.
+
+- **bwa** provides a parameter `custom_content` so that you can send the message you want.
+
+- **bwa** supports you to use environment variables. So you can use it very simply and pretty, like `@deco_noti()`.
+
+- **bwa** provides a method `send_noti()` so that you can be notified on any line without being restricted to the function.
 
 ## Reference & Copyright
 
