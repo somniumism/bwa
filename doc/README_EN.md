@@ -1,1 +1,0 @@
-# Bwa: Simple Notification Sender

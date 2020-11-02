@@ -12,10 +12,10 @@ Notion page: [English](https://www.notion.so/somniumis/Bwa-Simple-Notification-S
 More specific details can be accessed from the Notion page below: [Bwa: Simple Notification Sender](https://www.notion.so/somniumis/Bwa-Simple-Notification-Sender-a9919a46f2d64d11baab60deb4e8de55)
 
 <p align="center">
-    <img src="./docs/example.gif" width="450" height="300"/>  
+    <img src="../docs/example.gif" width="450" height="300"/>  
 </p>
 
-**bwa** is a tool, simple notifcation sender, that can send notifications related to the execution of functions by using a decorator. If you set up a decorator `@deco_noti()` above the function you made and a few client settings , you can receive a notification from the client when the function starts, completes, or ends due to an unexpected error.Currently, **bwa** supports these features for four clients; `Discord`, `Slack`, `Telegram` and `Gamil`. You will thus get messages from these clients.
+**bwa** is a tool, simple notifcation sender, that can send notifications related to the execution of functions by using a decorator. If you set up a decorator `@deco_noti()` above the function you made and a few client settings , you can receive a notification from the client when the function starts, completes, or ends due to an unexpected error. Currently, **bwa** supports these features for four clients; `Discord`, `Slack`, `Telegram` and `Gamil`. You will thus get messages from these clients.
 
 If you set your webhook url as an environment variable, you will be notified quite simply as follows:
 
