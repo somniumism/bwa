@@ -15,7 +15,7 @@ More specific details can be accessed from the Notion page below: [Bwa: Simple N
     <img src="../docs/example.gif" width="450" height="300"/>  
 </p>
 
-**bwa** is a tool, simple notifcation sender, that can send notifications related to the execution of functions by using a decorator. If you set up a decorator `@deco_noti()` above the function you made and a few client settings , you can receive a notification from the client when the function starts, completes, or ends due to an unexpected error. Currently, **bwa** supports these features for four clients; `Discord`, `Slack`, `Telegram` and `Gamil`. You will thus get messages from these clients.
+**bwa** is a simple notifcation sender, that can send notifications related to the execution of functions by using *a single decorator*. With few client settings, just insert the decorators right above some functions. You can receive a notification when the function starts, completes, or raises an unexpected error. Currently, **bwa** supports four clients; `Discord`, `Slack`, `Telegram` and `Gmail`.
 
 If you set your webhook url as an environment variable, you will be notified quite simply as follows:
 
@@ -26,21 +26,21 @@ from bwa.discord import deco_noti
 def run():
     print("Hi, bwa!")
 ```
-To be notified, you need to set up certain client settings or prepare information from the client, such as the web-hook url. Please refer to the following Notion page for detailed setup methods of each client.
+You need to export some variables for connection to messaging services (e.g. web-hook url for Discord). Please refer to the following Notion page for detailed instructions of each client.
 
-- Detailed setup methods and usage: [Bwa: Simple Notification Sender](https://www.notion.so/somniumis/Bwa-Simple-Notification-Sender-a9919a46f2d64d11baab60deb4e8de55)
+- Detailed instruction and usage: [Bwa: Simple Notification Sender](https://www.notion.so/somniumis/Bwa-Simple-Notification-Sender-a9919a46f2d64d11baab60deb4e8de55)
 
-- Platforms supported:  
+- Supported messaging services:  
     - [Discord](https://www.notion.so/somniumis/Discord-231544b268b64a42b3d084d1aa3c3d96) : `bwa.discord`
     - [Slack](https://www.notion.so/somniumis/Slack-5633bf0e13ab4e499e2b2c677852dbbf) : `bwa.slack`
     - [Telegram](https://www.notion.so/somniumis/Telegram-888407c4770a4b5a806a9c7c65e45250) : `bwa.telegm`
     - [Gmail](https://www.notion.so/somniumis/Gmail-197fc3dcf2f74c9dba651afb19267747) : `bwa.gmail`
 
-Note that the `telegram` module is `bwa.telegm`, not `bwa.telegram`
+Note that the module for `telegram` is `bwa.telegm`, not `bwa.telegram`
 
 ## Installation
 
-By using `pip` , you can install **bwa**. Simply install it using the command below.
+You can install **bwa** simply via `pip`.
 
 ```bash
 pip install bwa==1.1.1
@@ -50,7 +50,7 @@ pip install bwa==1.1.1
 
 **bwa** provides the decorator `@deco_noti()` and the method `send_noti()`. `@deco_noti()` lets you receive notifications about the start, complete, unexpected shutdown of your function. In addition, if you add `send_noti()` anywhere in your code, you will be notified when that code is executed.
 
-As I explained earlier, **bwa** has the feature that send and receive notifications through Discord(`bwa.discord`), Slack(`bwa.slack`), Telegram(`bwa.telegm`) and Gmail(`bwa.gmail`). Depending on the kind of client, the required parameters differ. The difference is as follows:
+As above explanation, **bwa** sends notifications via Discord(`bwa.discord`), Slack(`bwa.slack`), Telegram(`bwa.telegm`) and Gmail(`bwa.gmail`). The required parameters differ by messaging service. The essential variable(s) are as follows:
 
 - [bwa.discord](https://www.notion.so/somniumis/Discord-231544b268b64a42b3d084d1aa3c3d96#f3fe6caaaaf8441a829e1bfbd577ba0c)  
     `webhook_url` or environment variable `DISCORD_WEBHOOK_URL` : webhook url of your Discord server 
@@ -63,17 +63,17 @@ As I explained earlier, **bwa** has the feature that send and receive notificati
     `chat_id` or environment variable `TELEGRAM_CHAT_ID` : chat id of your telegram bot  
 
 - [bwa.gmail](https://www.notion.so/somniumis/Gmail-197fc3dcf2f74c9dba651afb19267747#58e9db16a1544a9484a88d2d5857c5ba)  
-    `receiver_emails` : email address of receivers  
+    `receiver_emails` : email addresses of the receiver (who want to get notifications)
     `sender_email` or environment variable `SENDER_EMAIL` : sender's Gmail address  
     `sender_password` or environment variable `SENDER_PASSWORD` : sender's Gmail password
 
-Please refer to our [Notion page](https://www.notion.so/somniumis/Bwa-Simple-Notification-Sender-a9919a46f2d64d11baab60deb4e8de55) , if you want to know what each parameter means and how you can get it.
+Please refer to our [Notion page](https://www.notion.so/somniumis/Bwa-Simple-Notification-Sender-a9919a46f2d64d11baab60deb4e8de55) for the detailed definition of each parameter.
 
-Also, please refer to [/examples](https://github.com/somniumism/bwa/tree/main/examples) in Github for the example code of each client.
+Also, please refer to [/examples](https://github.com/somniumism/bwa/tree/main/examples) in Github for the example code of each client.
 
 ## Output format(Default)
 
-**bwa** provides `custom_content` parameters to help you send your own messages. If you do not enter `custom_content`, however, you will be notified in the default format set by **bwa**; it is as follows. Because it is an example, there may be a difference from the actual results.
+**bwa** provides `custom_content` parameter to send your own messages. If `custom_content` do no exists, you will be notified in the default format as follows. (It may differ from the actual result as following is just an *example*.)
 
 ### When the function starts:
 
@@ -112,29 +112,29 @@ Please refer to our [Notion page](https://www.notion.so/somniumis/Bwa-Simple-Not
 
 Q. What does **bwa** mean?
 
-A: **bwa** means 'look at' in Korean.
-Importing such as `bwa.discord` can be translated into `look at discord` in Korean.
+A: **bwa** means *look* in Korean.
+Importing `bwa.discord` can be translated into `look at your discord` in Korean.
 
 
-Q. What is the difference between Huggingface's **knockknock** and **bwa**?
+Q. How **bwa** differs from **knockknock** of Huggingface?
 
-A: I used `knockknock` a lot, and there were many inconveniences while using `knockknock`.
+A: I found many inconveniences while using `knockknock` as a notification tool.
 
-1. `knockknock` cannot send the custom message that the user wants. You have to send the message only in the format made by them.
+1. `knockknock` cannot send a custom message. You have to send the message only in the format pre-defined in the library.
 
-2. Because `knockknock` does not support environment variables, you must write all parameters when using the decorator. In other words, it's not pretty and it's not simple.
+2. Because `knockknock` does not support environment variables, you must write all parameters when using the decorator. In other words, the decorator should be much longer (not a simple way).
 
-3. `knockknock` only supports the decorator. You may want to be notified about the execution of the line rather than the execution of the function. However, it is not possible in `knockknock`, which only supports the decorator.
+3. You may want to be notified about the execution of the line rather than the execution of the function, but it is not possible with `knockknock`, which only supports the decorator.
 
 So I designed **bwa** to support all of the above functions and create a simply, pretty and user-friendly library.
 
-- **bwa** provides a parameter `custom_content` so that you can send the message you want.
+- **bwa** provides `custom_content` parameter so that you can send messages you want.
 
-- **bwa** supports you to use environment variables. So you can use it very simply and pretty, like `@deco_noti()`.
+- **bwa** supports using environment variables. You can get notified in a very simple and pretty way, like `@deco_noti()`.
 
-- **bwa** provides a method `send_noti()` so that you can be notified on any line without being restricted to the function.
+- **bwa** provides a method `send_noti()` so that you can be notified on any line without being bounded to the function.
 
-Most importantly, `knockknock` is 10 letters, but `bwa` is 3 letters. Short, simple and easy is best.
+Greatest: `knockknock` is 10 letters, but `bwa` is 3 letters. The shorter name gives you less key strokes.
 
 ## Reference & Copyright
 

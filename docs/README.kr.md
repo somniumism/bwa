@@ -112,23 +112,25 @@ pip install bwa==1.1.1
 ```
 ## FAQ
 
-Q. What is the difference between Huggingface's **knockknock** and **bwa**?
+Q. How **bwa** differs from **knockknock** of Huggingface?
 
-A: I used `knockknock` a lot, and there were many inconveniences while using `knockknock`.
+A: I found many inconveniences while using `knockknock` as a notification tool.
 
-1. `knockknock` cannot send the custom message that the user wants. You have to send the message only in the format made by them.
+1. `knockknock` cannot send a custom message. You have to send the message only in the format pre-defined in the library.
 
-2. Because `knockknock` does not support environment variables, you must write all parameters when using the decorator. In other words, it's not pretty and it's not simple.
+2. Because `knockknock` does not support environment variables, you must write all parameters when using the decorator. In other words, the decorator should be much longer (not a simple way).
 
-3. `knockknock` only supports decorator. You may want to be notified about the execution of the line rather than the execution of the function. But it is not possible in `knockknock`, which only supports decoder.
+3. You may want to be notified about the execution of the line rather than the execution of the function, but it is not possible with `knockknock`, which only supports the decorator.
 
-So I designed the bwa to support all of the above functions and create a simply, pretty and user-friendly library.
+So I designed **bwa** to support all of the above functions and create a simply, pretty and user-friendly library.
 
-- **bwa** provides a parameter `custom_content` so that you can send the message you want.
+- **bwa** provides `custom_content` parameter so that you can send messages you want.
 
-- **bwa** supports you to use environment variables. So you can use it very simply and pretty, like `@deco_noti()`.
+- **bwa** supports using environment variables. You can get notified in a very simple and pretty way, like `@deco_noti()`.
 
-- **bwa** provides a method `send_noti()` so that you can be notified on any line without being restricted to the function.
+- **bwa** provides a method `send_noti()` so that you can be notified on any line without being bounded to the function.
+
+Greatest: `knockknock` is 10 letters, but `bwa` is 3 letters. The shorter name gives you less key strokes.
 
 ## Reference & Copyright
 
